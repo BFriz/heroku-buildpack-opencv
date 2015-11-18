@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+echo "Release"
 # do nothing!
 cat <<EOF
 ---
