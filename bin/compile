@@ -30,8 +30,11 @@ fi
 # vendor
 echo "-----> Vendoring OpenCV shared objects into slug"
 VENDORED_SO="$BUILD_DIR/vendor/opencv/lib"
+echo $VENDORED_SO
+echo $VENDORED_OPENCV/lib/." $VENDORED_SO
 mkdir -p $VENDORED_SO
-cp -a "$VENDORED_OPENCV/lib/." $VENDORED_SO
+cp -a "$VENDORED_OPENCV/lib/." $VENDORED_SO 
+ls VENDORED_SO >> echo
 
 # runtime
 mkdir -p "$BUILD_DIR/.profile.d"
