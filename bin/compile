@@ -31,10 +31,9 @@ fi
 echo "-----> Vendoring OpenCV shared objects into slug"
 VENDORED_SO="app/vendor/opencv/lib"
 echo $VENDORED_SO
-echo $VENDORED_OPENCV/lib/." $VENDORED_SO
+echo "$VENDORED_OPENCV/lib/." $VENDORED_SO
 mkdir -p $VENDORED_SO
 cp -a "$VENDORED_OPENCV/lib/." $VENDORED_SO 
-ls VENDORED_SO >> echo
 
 
 
