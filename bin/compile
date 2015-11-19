@@ -17,21 +17,24 @@ OPENCV_CACHE="$CACHE_DIR/opencv_$OPENCV_PACKAGE_ETAG";
 if [ -d "$OPENCV_CACHE" ]; then
   echo "-----> Reusing cached OpenCV ($OPENCV_PACKAGE_ETAG)"
   cp -a $OPENCV_CACHE $VENDORED_OPENCV
-  echo "Got from cache "
+  echo "-----> Got from cache "
 else
   echo "-----> Fetching and caching OpenCV ($OPENCV_PACKAGE_ETAG)"
   mkdir -p $VENDORED_OPENCV
   curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV
   mkdir -p $CACHE_DIR
   cp -a $VENDORED_OPENCV $OPENCV_CACHE
-  echo "Pulled from amazon"
+  echo "-----> Pulled from amazon"
 fi
 
 # vendor
 echo "-----> Vendoring OpenCV shared objects into slug"
-VENDORED_SO="app/vendor/opencv/lib"
+VENDORED_SO="$BUILD_DIR/vendor/opencv/lib"
 echo $VENDORED_SO
-echo "$VENDORED_OPENCV/lib/." $VENDORED_SO
+
+ls VENDORED_SO
+ls VENDORED_SO >> echo
+
 mkdir -p $VENDORED_SO
 cp -a "$VENDORED_OPENCV/lib/." $VENDORED_SO 
 
