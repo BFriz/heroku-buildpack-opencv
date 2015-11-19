@@ -42,7 +42,7 @@ ls "$VENDORED_OPENCV/lib/." >> echo
 
 export -p >> echo
 
-export PKG_CONFIG_PATH="$VENDORED_OPENCV/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="$VENDORED_OPENCV/lib/pkgconfig:$PKG_CONFIG_PATH"
 echo "PKG_CONFIG_PATH = "$PKG_CONFIG_PATH
 
 # runtime
