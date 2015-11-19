@@ -40,6 +40,10 @@ ls $VENDORED_SO >> echo
 echo "VENDORED_OPENCV/lib"  $VENDORED_OPENCV 
 ls "$VENDORED_OPENCV/lib/." >> echo
 
+export -p >> echo
+
+export PKG_CONFIG_PATH="$VENDORED_OPENCV/pkgconfig:$PKG_CONFIG_PATH"
+echo "PKG_CONFIG_PATH = "$PKG_CONFIG_PATH
 
 # runtime
 mkdir -p "$BUILD_DIR/.profile.d"
@@ -47,3 +51,7 @@ echo "export LD_LIBRARY_PATH=\"\$HOME/vendor/opencv/lib:\$LD_LIBRARY_PATH\"" > $
 echo "export PKG_CONFIG_PATH=\"\$HOME/vendor/opencv/lib/pkgconfig:\$PKG_CONFIG_PATH\"" >> $BUILD_DIR/.profile.d/opencv.sh
 
 echo "the End"
+
+tail 
+
+export -p >> echo
