@@ -40,12 +40,18 @@ ls "$VENDORED_OPENCV/lib/." >> echo
 
 
 # runtime
-mkdir -p "$BUILD_DIR/.profile.d/" >> echo
+echo "-----> Create scripts location .profile.d"
 
-echo "export LD_LIBRARY_PATH=\"\//app/vendor/opencv/lib:\$LD_LIBRARY_PATH\"" > $BUILD_DIR/.profile.d/opencv.sh
-echo "export PKG_CONFIG_PATH=\"\//app/vendor/opencv/lib/pkgconfig:\$PKG_CONFIG_PATH\"" >> $BUILD_DIR/.profile.d/opencv.sh
+mkdir -p $BUILD_DIR/.profile.d >> echo
 
-echo "the End"
+
+echo "export LD_LIBRARY_PATH=\"\ $BUILD_DIR/vendor/opencv/lib:\$LD_LIBRARY_PATH\"" > $BUILD_DIR/.profile.d/opencv.sh
+echo "export PKG_CONFIG_PATH=\"\ $BUILD_DIRopencv/lib/pkgconfig:\$PKG_CONFIG_PATH\"" >> $BUILD_DIR/.profile.d/opencv.sh
+
+echo "added Scripts"
+
+
+echo "-----> Fin"
 
 
 
