@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
-echo "Complie Start "
 # fail fast
 set -e
 
@@ -29,13 +28,11 @@ fi
 
 # vendor
 echo "-----> Vendoring OpenCV shared objects into slug"
-VENDORED_SO="$BUILD_DIR/vendor/opencv/lib"
+VENDORED_SO="$BUILD_DIR/vendor/opencv/"
 mkdir -p $VENDORED_SO >> echo
-cp -a "$VENDORED_OPENCV/lib/." $VENDORED_SO >> echo
+cp -a "$VENDORED_OPENCV/." $VENDORED_SO >> echo
 
 
-echo "VENDORED_SO"  $VENDORED_SO
-ls $VENDORED_SO >> echo
 
 echo "VENDORED_OPENCV/lib"  $VENDORED_OPENCV
 ls "$VENDORED_OPENCV/lib/." >> echo
@@ -43,7 +40,8 @@ ls "$VENDORED_OPENCV/lib/." >> echo
 
 
 # runtime
-mkdir -p "$BUILD_DIR/.profile.d"
+mkdir -p "$BUILD_DIR/.profile.d/" >> echo
+
 echo "export LD_LIBRARY_PATH=\"\//app/vendor/opencv/lib:\$LD_LIBRARY_PATH\"" > $BUILD_DIR/.profile.d/opencv.sh
 echo "export PKG_CONFIG_PATH=\"\//app/vendor/opencv/lib/pkgconfig:\$PKG_CONFIG_PATH\"" >> $BUILD_DIR/.profile.d/opencv.sh
 
