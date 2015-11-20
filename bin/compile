@@ -21,6 +21,9 @@ else
   echo "-----> Fetching and caching OpenCV ($OPENCV_PACKAGE_ETAG)"
   mkdir -p $VENDORED_OPENCV
 
+  echo  "curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV --strip-components=1"
+
+
   curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV --strip-components=1
   mkdir -p $CACHE_DIR
   cp -a $VENDORED_OPENCV $OPENCV_CACHE
