@@ -37,13 +37,10 @@ cp -a "$VENDORED_OPENCV/lib/." $VENDORED_SO >> echo
 echo "VENDORED_SO"  $VENDORED_SO
 ls $VENDORED_SO >> echo
 
-echo "VENDORED_OPENCV/lib"  $VENDORED_OPENCV 
+echo "VENDORED_OPENCV/lib"  $VENDORED_OPENCV
 ls "$VENDORED_OPENCV/lib/." >> echo
 
-export -p >> echo
 
-export PKG_CONFIG_PATH="$VENDORED_OPENCV/lib/pkgconfig:$PKG_CONFIG_PATH"
-echo "PKG_CONFIG_PATH = "$PKG_CONFIG_PATH
 
 # runtime
 mkdir -p "$BUILD_DIR/.profile.d"
@@ -52,6 +49,6 @@ echo "export PKG_CONFIG_PATH=\"\//app/vendor/opencv/lib/pkgconfig:\$PKG_CONFIG_P
 
 echo "the End"
 
-tail 
+tail
 
 export -p >> echo
