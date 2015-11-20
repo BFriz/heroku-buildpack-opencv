@@ -21,7 +21,7 @@ else
   echo "-----> Fetching and caching OpenCV ($OPENCV_PACKAGE_ETAG)"
   mkdir -p $VENDORED_OPENCV
 
-  curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV  --strip 1
+  curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV
   mkdir -p $CACHE_DIR
   cp -a $VENDORED_OPENCV $OPENCV_CACHE
   echo "-----> Pulled from amazon"
@@ -36,7 +36,6 @@ cp -a "$VENDORED_OPENCV/." $VENDORED_SO >> echo
 
 echo "VENDORED_OPENCV/lib"  $VENDORED_OPENCV
 ls "$VENDORED_OPENCV/lib/." >> echo
-
 
 
 # runtime
