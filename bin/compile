@@ -49,6 +49,6 @@ echo "export PKG_CONFIG_PATH=\"\//app/vendor/opencv/lib/pkgconfig:\$PKG_CONFIG_P
 
 echo "the End"
 
-tail
+
 
 export -p >> echo
