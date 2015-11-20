@@ -33,12 +33,6 @@ mkdir -p $VENDORED_SO >> echo
 cp -a "$VENDORED_OPENCV/." $VENDORED_SO >> echo
 
 
-
-echo "VENDORED_OPENCV/lib"  $VENDORED_OPENCV
-ls "$VENDORED_OPENCV/lib/." >> echo
-
-
-
 # runtime
 echo "-----> Create scripts location .profile.d"
 
