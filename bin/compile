@@ -20,7 +20,10 @@ if [ -d "$OPENCV_CACHE" ]; then
 else
   echo "-----> Fetching and caching OpenCV ($OPENCV_PACKAGE_ETAG)"
 
-  echo "var "  $VENDORED_OPENCV $OPENCV_PACKAGE
+  echo "var "
+  echo $VENDORED_OPENCV
+  echo $OPENCV_PACKAGE
+  echo "var end"
 
   mkdir -p $VENDORED_OPENCV
 
