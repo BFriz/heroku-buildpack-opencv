@@ -30,7 +30,7 @@ else
 
   curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV
 
-  ls -a  $VENDORED_OPENCV >> echo
+  ls -a  "$VENDORED_OPENCV/." >> echo
 
   mkdir -p $CACHE_DIR
   cp -a $VENDORED_OPENCV $OPENCV_CACHE
