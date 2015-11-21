@@ -26,11 +26,11 @@ else
 
   curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV --strip-components=1
 
-  ls "$VENDORED_OPENCV" >> echo
+  ls $VENDORED_OPENCV >> echo
 
   mv $VENDORED_OPENCV/* .
 
-  ls "$VENDORED_OPENCV" >> echo
+  ls $VENDORED_OPENCV >> echo
 
 
 
