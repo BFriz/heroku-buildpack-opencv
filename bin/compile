@@ -30,6 +30,7 @@ else
 
   curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV
 
+  echo "VENDORED_OPENCV"  $VENDORED_OPENCV
   ls -a  "$VENDORED_OPENCV/." >> echo
 
   mkdir -p $CACHE_DIR
@@ -44,8 +45,8 @@ mkdir -p $VENDORED_SO >> echo
 cp -a "$VENDORED_OPENCV/." $VENDORED_SO >> echo
 
 
-echo "VENDORED_OPENCV/lib"  $VENDORED_OPENCV
-ls "$VENDORED_OPENCV/lib/." >> echo
+echo "VENDORED_OPENCV"  $VENDORED_OPENCV
+ls "$VENDORED_OPENCV" >> echo
 
 
 # runtime
