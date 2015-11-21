@@ -23,12 +23,14 @@ else
   echo "var "
   echo $VENDORED_OPENCV
   echo $OPENCV_PACKAGE
+  echo $CACHE_DIR
   echo "var end"
 
   mkdir -p $VENDORED_OPENCV
 
   curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV
 
+  ls -a  $VENDORED_OPENCV >> echo
 
   mkdir -p $CACHE_DIR
   cp -a $VENDORED_OPENCV $OPENCV_CACHE
@@ -39,7 +41,7 @@ fi
 echo "-----> Vendoring OpenCV shared objects into slug"
 VENDORED_SO="$BUILD_DIR/vendor/opencv/"ls
 mkdir -p $VENDORED_SO >> echo
-cp -a "$VENDORED_OPENCV/./." $VENDORED_SO >> echo
+cp -a "$VENDORED_OPENCV/." $VENDORED_SO >> echo
 
 
 echo "VENDORED_OPENCV/lib"  $VENDORED_OPENCV
