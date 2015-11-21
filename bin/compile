@@ -19,13 +19,12 @@ if [ -d "$OPENCV_CACHE" ]; then
   echo "-----> Got from cache "
 else
   echo "-----> Fetching and caching OpenCV ($OPENCV_PACKAGE_ETAG)"
+
+  echo "var "  $VENDORED_OPENCV $OPENCV_PACKAGE
+
   mkdir -p $VENDORED_OPENCV
 
   curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV
-
-  echo $VENDORED_OPENCV
-
-  ls $VENDORED_OPENCV/ >> echo
 
 
   mkdir -p $CACHE_DIR
