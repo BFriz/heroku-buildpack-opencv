@@ -24,8 +24,10 @@ else
   echo  "curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV --strip-components=1"
 
 
-  curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV --strip-components=1
+  curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV
 
+
+  echo "Move the files up  a dir "
   ls $VENDORED_OPENCV >> echo
 
   mv $VENDORED_OPENCV/* .
