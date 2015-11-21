@@ -25,7 +25,7 @@ else
 
   echo $VENDORED_OPENCV
 
-  ls $VENDORED_OPENCV >> echo
+  ls $VENDORED_OPENCV/ >> echo
 
 
   mkdir -p $CACHE_DIR
