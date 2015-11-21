@@ -21,19 +21,18 @@ else
   echo "-----> Fetching and caching OpenCV ($OPENCV_PACKAGE_ETAG)"
   mkdir -p $VENDORED_OPENCV
 
-  echo  "curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV"
+  echo  "curl $OPENCV_PACKAGE -s -o - | tar xzf  $VENDORED_OPENCV"
 
 
   curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV
 
 
-  echo "Move the files up  a dir "
-  ls $VENDORED_OPENCV > echo
+  echo "Move the files up a dir "
+  ls $VENDORED_OPENCV >> echo
 
   mv "$VENDORED_OPENCV/*" .
 
-  ls $VENDORED_OPENCV > echo
-
+  ls $VENDORED_OPENCV >> echo
 
 
   mkdir -p $CACHE_DIR
