@@ -40,7 +40,7 @@ fi
 
 # vendor
 echo "-----> Vendoring OpenCV shared objects into slug"
-VENDORED_SO="$BUILD_DIR/vendor/opencv/"ls
+VENDORED_SO="$BUILD_DIR/vendor/opencv/"
 mkdir -p $VENDORED_SO >> echo
 cp -a "$VENDORED_OPENCV/." $VENDORED_SO >> echo
 
