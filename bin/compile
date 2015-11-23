@@ -10,61 +10,27 @@ CACHE_DIR=$2
 # fetch and cache the vulcan build
 OPENCV_PACKAGE="https://s3-us-west-2.amazonaws.com/dotteddeployment/vulcan-compiled-opencv.tgz"
 OPENCV_PACKAGE_ETAG=$(curl -s --head "$OPENCV_PACKAGE" | grep -Ei '^etag' | sed -r 's/^etag|[^a-zA-Z0-9]+//gi')
-VENDORED_OPENCV="/app/vendor"
+VENDORED_OPENCV="/app/vendor/opencv"
 OPENCV_CACHE="$CACHE_DIR/opencv_$OPENCV_PACKAGE_ETAG";
 
 if [ -d "$OPENCV_CACHE" ]; then
   echo "-----> Reusing cached OpenCV ($OPENCV_PACKAGE_ETAG)"
   cp -a $OPENCV_CACHE $VENDORED_OPENCV
-  echo "-----> Got from cache "
 else
   echo "-----> Fetching and caching OpenCV ($OPENCV_PACKAGE_ETAG)"
-
-  echo "var "
-  echo $VENDORED_OPENCV
-  echo $OPENCV_PACKAGE
-  echo $CACHE_DIR
-  echo "var end"
-
   mkdir -p $VENDORED_OPENCV
-
   curl $OPENCV_PACKAGE -s -o - | tar xzf - -C $VENDORED_OPENCV
-
-  echo "VENDORED_OPENCV"  $VENDORED_OPENCV
-  ls -a  "$VENDORED_OPENCV/." >> echo
-
   mkdir -p $CACHE_DIR
   cp -a $VENDORED_OPENCV $OPENCV_CACHE
-  echo "-----> Pulled from amazon"
 fi
 
 # vendor
 echo "-----> Vendoring OpenCV shared objects into slug"
-VENDORED_SO="$BUILD_DIR/vendor/opencv/"
-mkdir -p $VENDORED_SO >> echo
-cp -a "$VENDORED_OPENCV/." $VENDORED_SO >> echo
-
-
-echo "VENDORE:if expand("%") == ""|browse confirm w|else|confirm w|endif
-D_OPENCV"  $VENDORED_OPENCV
-ls "$VENDORED_OPENCV" >> echo
-
+VENDORED_SO="$BUILD_DIR/vendor/opencv/lib"
+mkdir -p $VENDORED_SO
+cp -a "$VENDORED_OPENCV/lib/." $VENDORED_SO
 
 # runtime
-echo "-----> Create scripts location .profile.d"
-
 mkdir -p "$BUILD_DIR/.profile.d"
-
-
-echo "export LD_LIBRARY_PATH=\"\$HOME/vendor/opencv/lib:\$LD_LIBRARY_PATH\""           >> $BUILD_DIR/.profile.d/opencv.sh
-
+echo "export LD_LIBRARY_PATH=\"\$HOME/vendor/opencv/lib:\$LD_LIBRARY_PATH\"" > $BUILD_DIR/.profile.d/opencv.sh
 echo "export PKG_CONFIG_PATH=\"\$HOME/vendor/opencv/lib/pkgconfig:\$PKG_CONFIG_PATH\"" >> $BUILD_DIR/.profile.d/opencv.sh
-
-echo "-----> Added opencv.sh location .profile.d"
-
-
-echo "-----> Fin"
-
-
-
-export -p >> echo
